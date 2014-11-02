@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Game1
 {
-    class Wave :iGameObject
+    class Wave : iGameObject
     {
         private int numOfEnemies; // Number of enemies to spawn
         private int waveNumber; // What wave is this?
@@ -19,6 +19,7 @@ namespace Game1
         private Level level; // A reference of the level
         private Texture2D enemyTexture; // A texture for the enemies
         public List<Enemy> enemies = new List<Enemy>(); // List of enemies
+        private Player player; // A reference to the player.
 
         public bool RoundOver
         {
@@ -42,19 +43,21 @@ namespace Game1
             get { return enemies; }
         }
 
-        public Wave(int waveNumber, int numOfEnemies, Level level, Texture2D enemyTexture)
+        public Wave(int waveNumber, int numOfEnemies, Player player, Level level, Texture2D enemyTexture)
         {
             this.waveNumber = waveNumber;
             this.numOfEnemies = numOfEnemies;
 
+            this.player = player; // Reference the player.
             this.level = level;
+
             this.enemyTexture = enemyTexture;
         }
 
+
         private void AddEnemy()
         {
-            Enemy enemy = new Enemy(enemyTexture,
-            level.Waypoints.Peek(), 50, 1, 0.5f);
+            Enemy enemy = new Enemy(enemyTexture, level.Waypoints.Peek(), 100, 1, 0.6f);
             enemy.SetWaypoints(level.Waypoints);
             enemies.Add(enemy);
             spawnTimer = 0;
@@ -67,7 +70,7 @@ namespace Game1
             spawningEnemies = true;
         }
 
-        
+
 
         public void Update(GameTime gameTime)
         {
@@ -88,6 +91,11 @@ namespace Game1
                     if (enemy.CurrentHealth > 0) // Enemy is at the end
                     {
                         enemyAtEnd = true;
+                        player.Lives -= 1;
+                    }
+                    else
+                    {
+                        player.Money += enemy.BountyGiven;
                     }
 
                     enemies.Remove(enemy);
@@ -101,6 +109,6 @@ namespace Game1
             foreach (Enemy enemy in enemies)
                 enemy.Draw(spriteBatch);
         }
-//END CLASS
+        //END CLASS
     }
 }

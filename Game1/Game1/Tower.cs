@@ -47,7 +47,7 @@ namespace Game1
             get { return target; }
         }
 
-        public void GetClosestEnemy(List<Enemy> enemies)
+        public virtual void GetClosestEnemy(List<Enemy> enemies)
         {
             target = null;
             float smallestRange = radius;
@@ -96,6 +96,12 @@ namespace Game1
                 bullet.Draw(spriteBatch);
 
             base.Draw(spriteBatch);
+        }
+
+        public virtual bool HasTarget
+        {
+            // Check if the tower has a target.
+            get { return target != null; }
         }
 
 //End

@@ -11,14 +11,14 @@ namespace Game1
     {
         int[,] map = new int[,] 
         {
-            {0,0,1,0,0,0,0,0,},
-            {0,0,1,1,0,0,0,0,},
-            {0,0,0,1,1,0,0,0,},
-            {0,0,0,0,1,0,0,0,},
-            {0,0,0,1,1,0,0,0,},
-            {0,0,1,1,0,0,0,0,},
-            {0,0,1,0,0,0,0,0,},
-            {0,0,1,1,1,1,1,1,},
+            {0,0,1,0,0,0,0,0,0},
+            {0,0,1,1,0,0,0,0,0},
+            {0,0,0,1,1,0,0,0,0},
+            {0,0,0,0,1,0,0,0,0},
+            {0,0,0,1,1,0,0,0,0},
+            {0,0,1,1,0,0,0,0,0},
+            {0,0,1,0,0,0,0,0,0},
+            {0,0,1,1,1,1,1,1,1},
         };
         private List<Texture2D> tileTextures = new List<Texture2D>();
         private Queue<Vector2> waypoints = new Queue<Vector2>();
@@ -36,6 +36,8 @@ namespace Game1
             waypoints.Enqueue(new Vector2(2, 5) * 32);
             waypoints.Enqueue(new Vector2(2, 7) * 32);
             waypoints.Enqueue(new Vector2(7, 7) * 32);
+            waypoints.Enqueue(new Vector2(7, 7) * 32);
+            waypoints.Enqueue(new Vector2(8, 7) * 32);
         }
 
         public Queue<Vector2> Waypoints
@@ -77,7 +79,7 @@ namespace Game1
 
         public int GetIndex(int cellX, int cellY)
         {
-            if (cellX < 0 || cellX > Width || cellY < 0 || cellY > Height)
+            if (cellX < 0 || cellX > Width - 1 || cellY < 0 || cellY > Height - 1)
                 return 0;
 
             return map[cellY, cellX];

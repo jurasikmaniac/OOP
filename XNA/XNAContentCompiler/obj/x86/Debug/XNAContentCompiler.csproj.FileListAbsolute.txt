@@ -1,0 +1,9 @@
+g:\REPS\OOP\XNA\XNAContentCompiler\bin\Debug\XNAContentCompiler.exe.config
+g:\REPS\OOP\XNA\XNAContentCompiler\bin\Debug\XNAContentCompiler.exe
+g:\REPS\OOP\XNA\XNAContentCompiler\bin\Debug\XNAContentCompiler.pdb
+g:\REPS\OOP\XNA\XNAContentCompiler\obj\x86\Debug\XNAContentCompiler.csprojResolveAssemblyReference.cache
+g:\REPS\OOP\XNA\XNAContentCompiler\obj\x86\Debug\XNAContentCompiler.Form1.resources
+g:\REPS\OOP\XNA\XNAContentCompiler\obj\x86\Debug\XNAContentCompiler.Properties.Resources.resources
+g:\REPS\OOP\XNA\XNAContentCompiler\obj\x86\Debug\XNAContentCompiler.csproj.GenerateResource.Cache
+g:\REPS\OOP\XNA\XNAContentCompiler\obj\x86\Debug\XNAContentCompiler.exe
+g:\REPS\OOP\XNA\XNAContentCompiler\obj\x86\Debug\XNAContentCompiler.pdb

@@ -8,7 +8,7 @@ using System.Text;
 
 namespace Game1
 {
-    class Player:iGameObject
+    class Player : iGameObject
     {
         private int money = 50;
         private int lives = 30;
@@ -22,16 +22,35 @@ namespace Game1
 
         private MouseState mouseState; // Mouse state for the current frame
         private MouseState oldState; // Mouse state for the previous frame
-        private Texture2D towerTexture;
+        // The textures used to draw our tower.
+        private Texture2D[] towerTextures;
         private Texture2D bulletTexture;
+
+        // The type of tower to add.
+        private string newTowerType;
+        // The index of the new towers texture.
+        private int newTowerIndex;
+
+        public int NewTowerIndex
+        {
+            set { newTowerIndex = value; }
+        }
+
+
+        public string NewTowerType
+        {
+            set { newTowerType = value; }
+        }
 
         public int Money
         {
             get { return money; }
+            set { money = value; }
         }
         public int Lives
         {
             get { return lives; }
+            set { lives = value; }
         }
 
         private Level level;
@@ -39,6 +58,23 @@ namespace Game1
         public Player(Level level)
         {
             this.level = level;
+        }
+
+        public void DrawPreview(SpriteBatch spriteBatch)
+        {
+            // Draw the tower preview.
+            if (string.IsNullOrEmpty(newTowerType) == false)
+            {
+                int cellX = (int)(mouseState.X / 32); // Convert the position of the mouse
+                int cellY = (int)(mouseState.Y / 32); // from array space to level space
+
+                int tileX = cellX * 32; // Convert from array space to level space
+                int tileY = cellY * 32; // Convert from array space to level space
+
+                Texture2D previewTexture = towerTextures[newTowerIndex];
+                spriteBatch.Draw(previewTexture, new Rectangle(tileX, tileY,
+                    previewTexture.Width, previewTexture.Height), Color.White);
+            }
         }
 
         public void Update(GameTime gameTime, List<Enemy> enemies)
@@ -52,16 +88,15 @@ namespace Game1
             tileY = cellY * 32; // Convert from array space to level space
             if (mouseState.LeftButton == ButtonState.Released && oldState.LeftButton == ButtonState.Pressed)
             {
-                if (IsCellClear())
+                if (string.IsNullOrEmpty(newTowerType) == false)
                 {
-                    ArrowTower tower = new ArrowTower(towerTexture, bulletTexture, new Vector2(tileX, tileY));
-                    towers.Add(tower);
+                    AddTower();
                 }
             }
 
             foreach (Tower tower in towers)
             {
-                if (tower.Target == null)
+                if (tower.HasTarget == false)
                 {
                     tower.GetClosestEnemy(enemies);
                 }
@@ -91,11 +126,14 @@ namespace Game1
             return inBounds && spaceClear && onPath; // If both checks are true return true
         }
 
-        public Player(Level level, Texture2D towerTexture, Texture2D bulletTexture)
+        /// <summary>
+        /// Construct a new player.
+        /// </summary>
+        public Player(Level level, Texture2D[] towerTextures, Texture2D bulletTexture)
         {
             this.level = level;
 
-            this.towerTexture = towerTexture;
+            this.towerTextures = towerTextures;
             this.bulletTexture = bulletTexture;
         }
 
@@ -108,6 +146,49 @@ namespace Game1
         }
 
 
+        /// <summary>
+        /// Adds a tower to the player's collection.
+        /// </summary>
+        public void AddTower()
+        {
+            Tower towerToAdd = null;
+
+            switch (newTowerType)
+            {
+                case "Arrow Tower":
+                    {
+                        towerToAdd = new ArrowTower(towerTextures[0],
+                            bulletTexture, new Vector2(tileX, tileY));
+                        break;
+                    }
+                case "Spike Tower":
+                    {
+                        towerToAdd = new SpikeTower(towerTextures[1],
+                            bulletTexture, new Vector2(tileX, tileY));
+                        break;
+                    }
+                case "Slow Tower":
+                    {
+                        towerToAdd = new SlowTower(towerTextures[2],
+                            bulletTexture, new Vector2(tileX, tileY));
+                        break;
+                    }
+            }
+
+            // Only add the tower if there is a space and if the player can afford it.
+            if (IsCellClear() == true && towerToAdd.Cost <= money)
+            {
+                towers.Add(towerToAdd);
+                money -= towerToAdd.Cost;
+
+                // Reset the newTowerType field.
+                newTowerType = string.Empty;
+            }
+            else
+            {
+                newTowerType = string.Empty;
+            }
+        }
 
         public void Update(GameTime gameTime)
         {

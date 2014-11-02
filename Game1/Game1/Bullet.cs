@@ -24,8 +24,7 @@ namespace Game1
             return age > 100;
         }
 
-        public Bullet(Texture2D texture, Vector2 position, float rotation,
-            int speed, int damage)
+        public Bullet(Texture2D texture, Vector2 position, float rotation, int speed, int damage)
             : base(texture, position)
         {
             this.rotation = rotation;
@@ -34,11 +33,22 @@ namespace Game1
             this.speed = speed;
         }
 
+        public Bullet(Texture2D texture, Vector2 position, Vector2 velocity, int speed, int damage)
+            : base(texture, position)
+        {
+            this.rotation = rotation;
+            this.damage = damage;
+
+            this.speed = speed;
+
+            this.velocity = velocity * speed;
+        }
+
         public void Kill()
         {
             this.age = 200;
         }
-        
+
         public override void Update(GameTime gameTime)
         {
             age++;
