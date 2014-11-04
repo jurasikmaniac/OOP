@@ -9,9 +9,9 @@ namespace Game1
 {
     class SpikeTower : Tower
     {
-        // A list of directions that the tower can shoot in.
+        // Список направлений для стрельбы
         private Vector2[] directions = new Vector2[8];
-        // All the enimes that are in range of the tower.
+        // Все враги в радиусе стрельбы
         private List<Enemy> targets = new List<Enemy>();
 
         /// <summary>
@@ -20,12 +20,11 @@ namespace Game1
         public SpikeTower(Texture2D texture, Texture2D bulletTexture, Vector2 position)
             : base(texture, bulletTexture, position)
         {
-            this.damage = 20; // Set the damage.
-            this.cost = 40;   // Set the initial cost.
+            this.damage = 20;
+            this.cost = 40;  
 
-            this.radius = 48; // Set the radius.
-
-            // Store a list of all the directions the tower can shoot.
+            this.radius = 48; 
+            
             directions = new Vector2[]
             {
                new Vector2(-1, -1), // North West
@@ -43,13 +42,13 @@ namespace Game1
         {
             bulletTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-            // Decide if it is time to shoot.
+            // Настало время палить!!!
             if (bulletTimer >= 1.0f && targets.Count != 0)
             {
-                // For every direction the tower can shoot,
+                // Пуляй по всем
                 for (int i = 0; i < directions.Length; i++)
                 {
-                    // create a new bullet that moves in that direction.
+                    // пали пали пали
                     Bullet bullet = new Bullet(bulletTexture, Vector2.Subtract(center,
                         new Vector2(bulletTexture.Width / 2)), directions[i], 6, damage);
 
@@ -59,29 +58,29 @@ namespace Game1
                 bulletTimer = 0;
             }
 
-            // Loop through all the bullets.
+            // проходим через все пули
             for (int i = 0; i < bulletList.Count; i++)
             {
                 Bullet bullet = bulletList[i];
                 bullet.Update(gameTime);
 
-                // Kill the bullet when it is out of range.
+                // убить пули за пределами радиуса стрельбы
                 if (!IsInRange(bullet.Center))
                 {
                     bullet.Kill();
                 }
 
-                // Loop through all the possible targets
+                // проход по всем целям
                 for (int t = 0; t < targets.Count; t++)
                 {
-                    // If this bullet hits a target and is in range,
+                    // если в рдиусе то ПАЛИ ПАЛИ!
                     if (targets[t] != null && Vector2.Distance(bullet.Center, targets[t].Center) < 12)
                     {
-                        // hurt the enemy.
+                        // раз удар и два удар
                         targets[t].CurrentHealth -= bullet.Damage;
                         bullet.Kill();
 
-                        // This bullet can't kill anyone else.
+                        // пуля ломается после попадания
                         break;
                     }
                 }
@@ -97,22 +96,22 @@ namespace Game1
 
         public override bool HasTarget
         {
-            // The tower will never have just one target.
+            // Башня никогда не будет с одной целью
             get { return false; }
         }
 
         public override void GetClosestEnemy(List<Enemy> enemies)
         {
-            // Do a fresh search for targets.
+            // чистим дуло
             targets.Clear();
 
-            // Loop over all the enemies.
+            // прогоняем по всем врагам
             foreach (Enemy enemy in enemies)
             {
-                // Check wether this enemy is in shooting distance.
+                // если в радиусе выстрела, то в список на отстрел
                 if (IsInRange(enemy.Center))
                 {
-                    // Make it a target.
+                    
                     targets.Add(enemy);
                 }
             }

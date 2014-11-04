@@ -20,15 +20,15 @@ namespace Game1
 
         private List<Tower> towers = new List<Tower>();
 
-        private MouseState mouseState; // Mouse state for the current frame
-        private MouseState oldState; // Mouse state for the previous frame
-        // The textures used to draw our tower.
+        private MouseState mouseState; // статус мышки текущий
+        private MouseState oldState; // предыдущий
+        // каринки пуль и башен
         private Texture2D[] towerTextures;
         private Texture2D bulletTexture;
 
-        // The type of tower to add.
+        // тип добавляемой башни
         private string newTowerType;
-        // The index of the new towers texture.
+        //индекс новой башни
         private int newTowerIndex;
 
         public int NewTowerIndex
@@ -62,7 +62,7 @@ namespace Game1
 
         public void DrawPreview(SpriteBatch spriteBatch)
         {
-            // Draw the tower preview.
+            
             if (string.IsNullOrEmpty(newTowerType) == false)
             {
                 int cellX = (int)(mouseState.X / 32); // Convert the position of the mouse
@@ -103,17 +103,16 @@ namespace Game1
 
                 tower.Update(gameTime);
             }
-            oldState = mouseState; // Set the oldState so it becomes the state of the previous frame.
+            oldState = mouseState; 
         }
 
         private bool IsCellClear()
         {
-            bool inBounds = cellX >= 0 && cellY >= 0 && // Make sure tower is within limits
-                cellX < level.Width && cellY < level.Height;
+            bool inBounds = cellX >= 0 && cellY >= 0 &&                 cellX < level.Width && cellY < level.Height;
 
             bool spaceClear = true;
 
-            foreach (Tower tower in towers) // Check that there is no tower here
+            foreach (Tower tower in towers) 
             {
                 spaceClear = (tower.Position != new Vector2(tileX, tileY));
 
@@ -175,13 +174,13 @@ namespace Game1
                     }
             }
 
-            // Only add the tower if there is a space and if the player can afford it.
+           
             if (IsCellClear() == true && towerToAdd.Cost <= money)
             {
                 towers.Add(towerToAdd);
                 money -= towerToAdd.Cost;
 
-                // Reset the newTowerType field.
+           
                 newTowerType = string.Empty;
             }
             else

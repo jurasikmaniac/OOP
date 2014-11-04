@@ -9,18 +9,18 @@ namespace Game1
 {
     class SlowTower : Tower
     {
-        // Defines how fast an enemy will move when hit.
+        // Слоумоушен модификатор
         private float speedModifier;
-        // Defines how long this effect will last.
+        // продолжительность замедления
         private float modifierDuration;
 
         public SlowTower(Texture2D texture, Texture2D bulletTexture, Vector2 position)
             : base(texture, bulletTexture, position)
         {
-            this.damage = 15; // Set the damage
-            this.cost = 15;   // Set the initial cost
+            this.damage = 15; 
+            this.cost = 15;   
 
-            this.radius = 80; // Set the radius
+            this.radius = 80; 
             this.speedModifier = 0.6f;
             this.modifierDuration = 2.0f;
         }
@@ -52,8 +52,7 @@ namespace Game1
 
                 if (target != null && Vector2.Distance(bullet.Center, target.Center) < 12)
                 {
-                    // Apply our speed modifier if it is better than
-                    // the one currently affecting the target :
+                    
                     if (target.SpeedModifier <= speedModifier)
                     {
                         target.SpeedModifier = speedModifier;

@@ -9,17 +9,17 @@ namespace Game1
 {
     class Wave : iGameObject
     {
-        private int numOfEnemies; // Number of enemies to spawn
-        private int waveNumber; // What wave is this?
-        private float spawnTimer = 0; // When should we spawn an enemy
-        private int enemiesSpawned = 0; // How mant enemies have spawned
+        private int numOfEnemies; // Количество врагов
+        private int waveNumber; // номер волны
+        private float spawnTimer = 0; // Когда мы должны создать врагов
+        private int enemiesSpawned = 0; // сколько врагов делать
 
-        private bool enemyAtEnd; // Has an enemy reached the end of the path?
-        private bool spawningEnemies; // Are we still spawing enemies?
-        private Level level; // A reference of the level
-        private Texture2D enemyTexture; // A texture for the enemies
-        public List<Enemy> enemies = new List<Enemy>(); // List of enemies
-        private Player player; // A reference to the player.
+        private bool enemyAtEnd; // Дошел до конца или нет?
+        private bool spawningEnemies; // продолжать порождать врагов?
+        private Level level; // ссылка на уровень игры
+        private Texture2D enemyTexture; // текстуры врагов
+        public List<Enemy> enemies = new List<Enemy>(); // список врагов
+        private Player player; // ссылка на игрока
 
         public bool RoundOver
         {
@@ -75,12 +75,12 @@ namespace Game1
         public void Update(GameTime gameTime)
         {
             if (enemiesSpawned == numOfEnemies)
-                spawningEnemies = false; // We have spawned enough enemies
+                spawningEnemies = false; 
             if (spawningEnemies)
             {
                 spawnTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
                 if (spawnTimer > 2)
-                    AddEnemy(); // Time to add a new enemey
+                    AddEnemy(); 
             }
             for (int i = 0; i < enemies.Count; i++)
             {
@@ -88,7 +88,7 @@ namespace Game1
                 enemy.Update(gameTime);
                 if (enemy.IsDead)
                 {
-                    if (enemy.CurrentHealth > 0) // Enemy is at the end
+                    if (enemy.CurrentHealth > 0) 
                     {
                         enemyAtEnd = true;
                         player.Lives -= 1;

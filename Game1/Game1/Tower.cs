@@ -9,13 +9,13 @@ namespace Game1
 {
     class Tower : Sprite
     {
-        protected int cost; // How much will the tower cost to make
-        protected int damage; // The damage done to enemy's
-        protected Enemy target;
-        protected float radius; // How far the tower can shoot
-        protected Texture2D bulletTexture;
-        protected float bulletTimer; // How long ago was a bullet fired
-        protected List<Bullet> bulletList = new List<Bullet>();
+        protected int cost; // стоимость
+        protected int damage; // урон
+        protected Enemy target; //цель башни
+        protected float radius; // радиус стрельбы
+        protected Texture2D bulletTexture; //текстыра пули
+        protected float bulletTimer; // время жизни снаряда
+        protected List<Bullet> bulletList = new List<Bullet>();//список пуль
 
         public int Cost
         {
@@ -99,11 +99,10 @@ namespace Game1
         }
 
         public virtual bool HasTarget
-        {
-            // Check if the tower has a target.
+        {            
             get { return target != null; }
         }
 
-//End
+        //End
     }
 }

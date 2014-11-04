@@ -7,6 +7,7 @@ using System.Text;
 
 namespace Game1
 {
+    //пиу пиу
     class Bullet : Sprite
     {
         private int damage;

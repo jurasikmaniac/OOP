@@ -7,6 +7,7 @@ using System.Text;
 
 namespace Game1
 {
+    //интерфейс игровых обьектов
     interface iGameObject
     {
         void Update(GameTime gameTime);

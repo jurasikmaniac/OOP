@@ -10,11 +10,11 @@ namespace Game1
     class Toolbar:Sprite
     {
        
-        // A class to access the font we created
+        // Магический шрифт моногейма
         private SpriteFont font;
 
         protected Rectangle destrect;
-        // The position of the text
+        // Позиция текста
         private Vector2 textPosition;
 
         
@@ -34,7 +34,7 @@ namespace Game1
             destrect.Width = screenWidth;
             destrect.Height = texture.Height;
 
-            // Offset the text to the bottom right corner
+            // Здвиг от края окна
             textPosition = new Vector2(130, position.Y + 10);
         }
 

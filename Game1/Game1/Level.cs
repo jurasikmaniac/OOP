@@ -7,8 +7,9 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Game1
 {
-    class Level
+    class Level:iGameObject
     {
+        //карта
         int[,] map = new int[,] 
         {
             {0,0,1,0,0,0,0,0,0},
@@ -22,7 +23,7 @@ namespace Game1
         };
         private List<Texture2D> tileTextures = new List<Texture2D>();
         private Queue<Vector2> waypoints = new Queue<Vector2>();
-
+        //путь врагов
         public Level()
         {
             waypoints.Enqueue(new Vector2(2, 0) * 32);
@@ -86,5 +87,10 @@ namespace Game1
         }
 
 
+
+        public void Update(GameTime gameTime)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -9,28 +9,28 @@ namespace Game1
 {
     class WaveManager : iGameObject
     {
-        private int numberOfWaves; // How many waves the game will have
-        private float timeSinceLastWave; // How long since the last wave ended
+        private int numberOfWaves; // Сколько волн будет
+        private float timeSinceLastWave; // Ккак давно последняя вола закончилась
 
-        private Queue<Wave> waves = new Queue<Wave>(); // A queue of all our waves
+        private Queue<Wave> waves = new Queue<Wave>(); // Очередь волн
 
-        private Texture2D enemyTexture; // The texture used to draw the enemies
+        private Texture2D enemyTexture; // текстура врагов
 
-        private bool waveFinished = false; // Is the current wave over?
+        private bool waveFinished = false; // состояние волны
 
-        private Level level; // A reference to our level class
+        private Level level; // ссылка на класс уровня игры
 
-        public Wave CurrentWave // Get the wave at the front of the queue
+        public Wave CurrentWave // Получить волну в начале очереди
         {
             get { return waves.Peek(); }
         }
 
-        public List<Enemy> Enemies // Get a list of the current enemeies
+        public List<Enemy> Enemies // Получить список текущих врагов
         {
             get { return CurrentWave.Enemies; }
         }
 
-        public int Round // Returns the wave number
+        public int Round // Вернет номер волны
         {
             get { return CurrentWave.RoundNumber + 1; }
         }
@@ -38,22 +38,22 @@ namespace Game1
 
         public void Update(GameTime gameTime)
         {
-            CurrentWave.Update(gameTime); // Update the wave
+            CurrentWave.Update(gameTime); // Обновим волну
 
-            if (CurrentWave.RoundOver) // Check if it has finished
+            if (CurrentWave.RoundOver) // проверка на конец волны
             {
                 waveFinished = true;
             }
 
-            if (waveFinished) // If it has finished
+            if (waveFinished) // если волна завершилась статуем таймер отсчета
             {
                 timeSinceLastWave += (float)gameTime.ElapsedGameTime.TotalSeconds; // Start the timer
             }
 
-            if (timeSinceLastWave > 3.0f) // If 30 seconds has passed
+            if (timeSinceLastWave > 3.0f) // после х.х секунд начнем новую
             {
-                waves.Dequeue(); // Remove the finished wave
-                StartNextWave(); // Start the next wave
+                waves.Dequeue(); 
+                StartNextWave(); 
             }
         }
 
@@ -74,7 +74,7 @@ namespace Game1
                 int initialNumerOfEnemies = 6;
                 int numberModifier = (i / 6) + 1;
 
-                // Pass the reference to the player, to the wave class.
+                // Передать ссылку на игрока к классу волн
                 Wave wave = new Wave(i, initialNumerOfEnemies *
                     numberModifier, player, level, enemyTexture);
 
@@ -86,7 +86,7 @@ namespace Game1
 
         private void StartNextWave()
         {
-            if (waves.Count > 0) // If there are still waves left
+            if (waves.Count > 0) // стартуем новые волны
             {
                 waves.Peek().Start(); // Start the next one
 

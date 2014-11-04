@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Game1
 {
-    class Sprite :iGameObject
+   class Sprite :iGameObject
     {
         protected Texture2D texture;
 

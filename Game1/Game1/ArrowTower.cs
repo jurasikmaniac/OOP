@@ -12,10 +12,10 @@ namespace Game1
         public ArrowTower(Texture2D texture, Texture2D bulletTexture, Vector2 position)
             : base(texture, bulletTexture, position)
         {
-            this.damage = 15; // Set the damage
-            this.cost = 15;   // Set the initial cost
+            this.damage = 15; 
+            this.cost = 15;   
 
-            this.radius = 80; // Set the radius
+            this.radius = 80; 
         }
 
         public override void Update(GameTime gameTime)

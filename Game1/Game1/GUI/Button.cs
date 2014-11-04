@@ -8,6 +8,9 @@ using System.Text;
 
 namespace Game1
 {
+    /// <summary>
+    /// Статус кнопки
+    /// </summary>
     public enum ButtonStatus
     {
         Normal,
@@ -16,22 +19,22 @@ namespace Game1
     }
     class Button : Sprite
     {
-        // Store the MouseState of the last frame.
+        // хранит MouseState из предыдущего кадра
         private MouseState previousState;
 
-        // The the different state textures.
+        // текстуры состояний
         private Texture2D hoverTexture;
         private Texture2D pressedTexture;
 
-        // A rectangle that covers the button.
+        // прямоугольник границ
         private Rectangle bounds;
 
-        // Store the current state of the button.
+        // хранит текущее состояние кнопки
         private ButtonStatus state = ButtonStatus.Normal;
-        // Gets fired when the button is pressed.
+        // событие клика
         public event EventHandler Clicked;
 
-        // Gets fired when the button is held down.
+        // событие нажата но н отпущена
         public event EventHandler OnPress;
 
         public Button(Texture2D texture, Texture2D hoverTexture, Texture2D pressedTexture, Vector2 position)
@@ -45,12 +48,12 @@ namespace Game1
         }
 
         /// <summary>
-        /// Updates the buttons state.
+        /// Обновляем состояния кнопки
         /// </summary>
         /// <param name="gameTime">The current game time.</param>
         public override void Update(GameTime gameTime)
         {
-            // Determine if the mouse if over the button.
+            // Получаем состояние мыши
             MouseState mouseState = Mouse.GetState();
 
             int mouseX = mouseState.X;
@@ -58,7 +61,7 @@ namespace Game1
 
             bool isMouseOver = bounds.Contains(mouseX, mouseY);
 
-            // Update the button state.
+            // обновим состояние
             if (isMouseOver && state != ButtonStatus.Pressed)
             {
                 state = ButtonStatus.MouseOver;
@@ -67,35 +70,34 @@ namespace Game1
             {
                 state = ButtonStatus.Normal;
             }
-            // Check if the player holds down the button.
+            // Проверим если зажата кнопка
             if (mouseState.LeftButton == ButtonState.Pressed &&
              previousState.LeftButton == ButtonState.Released)
             {
                 if (isMouseOver == true)
                 {
-                    // Update the button state.
+                    // обновим
                     state = ButtonStatus.Pressed;
                     if (OnPress != null)
                     {
-                        // Fire the OnPress event.
+                        // очистим событие
                         OnPress(this, EventArgs.Empty);
                     }
                 }
             }
 
-            // Check if the player releases the button.
-            // Check if the player releases the button.
+            // Если игрок отпустил кнопку
             if (mouseState.LeftButton == ButtonState.Released &&
              previousState.LeftButton == ButtonState.Pressed)
             {
                 if (isMouseOver == true)
                 {
-                    // update the button state.
+                    // обновим статус
                     state = ButtonStatus.MouseOver;
 
                     if (Clicked != null)
                     {
-                        // Fire the clicked event.
+                        // очистим
                         Clicked(this, EventArgs.Empty);
                     }
                 }
@@ -111,7 +113,7 @@ namespace Game1
         }
 
         /// <summary>
-        /// Draws the button.
+        /// Нарисует кнопку
         /// </summary>
         /// <param name="spriteBatch">A SpriteBatch that has been started</param>
         public override void Draw(SpriteBatch spriteBatch)

@@ -47,4 +47,9 @@ g:\REPS\OOP\Game1\Game1\bin\Windows\Debug\SharpDX.Direct2D1.xml
 g:\REPS\OOP\Game1\Game1\bin\Windows\Debug\SharpDX.XInput.xml
 g:\REPS\OOP\Game1\Game1\bin\Windows\Debug\SharpDX.RawInput.xml
 g:\REPS\OOP\Game1\Game1\bin\Windows\Debug\SharpDX.Direct3D9.xml
+g:\REPS\OOP\Game1\Game1\bin\Windows\Debug\Game1.exe.manifest
+g:\REPS\OOP\Game1\Game1\bin\Windows\Debug\Game1.application
+g:\REPS\OOP\Game1\Game1\obj\x86\Debug\Game1.exe.manifest
+g:\REPS\OOP\Game1\Game1\obj\x86\Debug\Game1.application
+g:\REPS\OOP\Game1\Game1\bin\Windows\Debug\Game1.exe.config
 g:\REPS\OOP\Game1\Game1\obj\x86\Debug\Game1.csprojResolveAssemblyReference.cache

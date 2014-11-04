@@ -18,11 +18,8 @@ namespace Game1
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        Level level = new Level();
-        //Enemy enemy1;
-        //Wave wave;
-        WaveManager waveManager;
-        //Tower tower;
+        Level level = new Level();       
+        WaveManager waveManager;       
         Player player;
         Toolbar toolBar;
         Button arrowButton;
@@ -41,12 +38,7 @@ namespace Game1
             IsMouseVisible = true;
         }
 
-        /// <summary>
-        /// Allows the game to perform any initialization it needs to before starting to run.
-        /// This is where it can query for any required services and load any non-graphic
-        /// related content.  Calling base.Initialize will enumerate through any components
-        /// and initialize them as well.
-        /// </summary>
+     
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
@@ -69,7 +61,7 @@ namespace Game1
             Texture2D enemyTexture = Content.Load<Texture2D>("enemy");
             //enemy1 = new Enemy(enemyTexture, Vector2.Zero, 100, 10, 0.5f);
             //enemy1.SetWaypoints(level.Waypoints);
-            
+
             // Texture2D towerTexture = Content.Load<Texture2D>("arrowtower");
             Texture2D bulletTexture = Content.Load<Texture2D>("bullet");
 
@@ -85,7 +77,7 @@ namespace Game1
             player = new Player(level, towerTextures, bulletTexture);
             Texture2D topBar = Content.Load<Texture2D>("tool bar");
             SpriteFont font = Content.Load<SpriteFont>("Arial");
-waveManager = new WaveManager( player, level, 24, enemyTexture);
+            waveManager = new WaveManager(player, level, 24, enemyTexture);
             toolBar = new Toolbar(topBar, font, new Vector2(0, level.Height * 32), graphics.PreferredBackBufferWidth);
 
             // The "Normal" texture for the arrow button.
@@ -96,7 +88,7 @@ waveManager = new WaveManager( player, level, 24, enemyTexture);
             Texture2D arrowPressed = Content.Load<Texture2D>("GUI\\Arrow Tower\\arrowpressed");
             // Initialize the arrow button.
             arrowButton = new Button(arrowNormal, arrowHover, arrowPressed, new Vector2(0, level.Height * 32));
-           // arrowButton.Clicked += new EventHandler(arrowButton_Clicked);
+            // arrowButton.Clicked += new EventHandler(arrowButton_Clicked);
 
             // The "Normal" texture for the spike button.
             Texture2D spikeNormal = Content.Load<Texture2D>("GUI\\Spike Tower\\spike button");
@@ -192,12 +184,15 @@ waveManager = new WaveManager( player, level, 24, enemyTexture);
             level.Draw(spriteBatch);
             waveManager.Draw(spriteBatch);
             player.Draw(spriteBatch);
-            // Draw the tool bar first,
+         
             toolBar.Draw(spriteBatch, player);
-            // and then our buttons.
+            
             spikeButton.Draw(spriteBatch);
+
             arrowButton.Draw(spriteBatch);
-            slowButton.Draw(spriteBatch);
+
+                        slowButton.Draw(spriteBatch);
+
             player.DrawPreview(spriteBatch);
             spriteBatch.End();
 

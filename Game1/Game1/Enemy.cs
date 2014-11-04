@@ -25,7 +25,7 @@ namespace Game1
 
 
         /// <summary>
-        /// Alters the speed of the enemy.
+        /// модификатор скорости.
         /// </summary>
         public float SpeedModifier
         {
@@ -33,7 +33,7 @@ namespace Game1
             set { speedModifier = value; }
         }
         /// <summary>
-        /// Defines how long the speed modification will last.
+        /// продолджительность модификатора скорости
         /// </summary>
         public float ModifierDuration
         {
