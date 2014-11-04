@@ -1,64 +1,57 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="Game1.ArrowTower">
-    <Position X="5.25" Y="11" Width="1.5" />
+    <Position X="9.25" Y="8.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ArrowTower.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Game1.Bullet">
-    <Position X="2.25" Y="1.75" Width="1.5" />
+    <Position X="2.75" Y="7" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAACAAEAAwAAAAAAAEAAAAAAAAQgAAAAAAAAAAAA=</HashCode>
       <FileName>Bullet.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Game1.Enemy">
-    <Position X="4.5" Y="4.5" Width="1.5" />
+    <Position X="7.25" Y="7" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ABQAAAABAAACAwgAEAAAEBQABAIEAQAAAIAACEAQAAA=</HashCode>
       <FileName>Enemy.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Game1.Game1">
-    <Position X="11.75" Y="7.25" Width="1.5" />
+    <Position X="11.25" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>QAQAUEAAAAAAAwAAAAAEAAAAQAEAIJgBAAAAAAABAIY=</HashCode>
+      <HashCode>QAQA0EAAAAAAAwCAAAAEAAAAQAEAIJgBAAAAAAABAIY=</HashCode>
       <FileName>Game1.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Game1.Button">
-    <Position X="0.5" Y="1.75" Width="1.5" />
-    <InheritanceLine Type="Game1.Sprite" FixedFromPoint="true">
-      <Path>
-        <Point X="7.25" Y="1.312" />
-        <Point X="1.25" Y="1.312" />
-        <Point X="1.25" Y="1.75" />
-      </Path>
-    </InheritanceLine>
+    <Position X="0.5" Y="7" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAAAAAAgAAAAAIAABAAAAIACAEAAACAAAAAgA=</HashCode>
       <FileName>GUI\Button.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Game1.Toolbar">
-    <Position X="2.25" Y="5.5" Width="1.5" />
+    <Position X="5" Y="7" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ACIAAAAAAAAAAgAAAAAAAAAAAAAAAAAAABAAAAAAAAA=</HashCode>
       <FileName>GUI\Toolbar.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Game1.Level">
-    <Position X="0.5" Y="5.5" Width="1.5" />
+  <Class Name="Game1.Level" BaseTypeListCollapsed="true">
+    <Position X="5.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAEAAABAAAAiAQAAAAAkAAAAIAAAAAAAQAAAAAAAA=</HashCode>
       <FileName>Level.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
+    <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="Game1.Player" BaseTypeListCollapsed="true">
-    <Position X="14.75" Y="1.5" Width="1.5" />
+    <Position X="1.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AgQQQBgCAIgAAgEAAAAAARACAAMAEAACAAAAAgCAEAA=</HashCode>
       <FileName>Player.cs</FileName>
@@ -66,29 +59,21 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="Game1.Program">
-    <Position X="9.5" Y="1.5" Width="1.5" />
+    <Position X="11.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
       <FileName>Program.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Game1.SlowTower">
-    <Position X="7.5" Y="11" Width="1.5" />
+    <Position X="11.25" Y="8.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ABQAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>SlowTower.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Game1.SpikeTower">
-    <Position X="10" Y="11" Width="1.5" />
-    <InheritanceLine Type="Game1.Tower" FixedToPoint="true">
-      <Path>
-        <Point X="8.25" Y="10.521" />
-        <Point X="8.25" Y="10.76" />
-        <Point X="10.625" Y="10.76" />
-        <Point X="10.625" Y="11" />
-      </Path>
-    </InheritanceLine>
+  <Class Name="Game1.SpikeTower" Collapsed="true">
+    <Position X="13" Y="8.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAAAAEAAAAAAAAAAABAAAEAAAAAABAAAAAAAA=</HashCode>
       <FileName>SpikeTower.cs</FileName>
@@ -103,14 +88,14 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Game1.Tower">
-    <Position X="7.5" Y="5.5" Width="1.5" />
+    <Position X="9.25" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQIAACACAAEgggAIAAAADEBAAAQAAAAAAAAggAAAAg=</HashCode>
       <FileName>Tower.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Game1.Wave" BaseTypeListCollapsed="true">
-    <Position X="11.25" Y="1.5" Width="1.5" />
+    <Position X="13" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQBAEAAACBEAgIAAAAAEAAAAAEAAAABAAEBAAAYAQA=</HashCode>
       <FileName>Wave.cs</FileName>
@@ -118,7 +103,7 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="Game1.WaveManager" BaseTypeListCollapsed="true">
-    <Position X="13" Y="1.5" Width="1.5" />
+    <Position X="3.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AASAAAAAAICCAgAAAAAAAAAACAEAAAAAAABAAAIIAAA=</HashCode>
       <FileName>WaveManager.cs</FileName>
@@ -126,14 +111,14 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Interface Name="Game1.iGameObject">
-    <Position X="9.5" Y="4.25" Width="1.5" />
+    <Position X="9.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>iGameObject.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Enum Name="Game1.ButtonStatus">
-    <Position X="9.5" Y="2.75" Width="1.5" />
+    <Position X="0.5" Y="10.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAgAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAEAAA=</HashCode>
       <FileName>GUI\Button.cs</FileName>

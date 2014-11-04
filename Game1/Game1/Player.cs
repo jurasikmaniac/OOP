@@ -11,7 +11,7 @@ namespace Game1
     class Player : iGameObject
     {
         private int money = 50;
-        private int lives = 30;
+        private int lives = 3;
         private int cellX;
         private int cellY;
 
@@ -55,10 +55,10 @@ namespace Game1
 
         private Level level;
 
-        public Player(Level level)
-        {
-            this.level = level;
-        }
+        //public Player(Level level)
+        //{
+        //    this.level = level;
+        //}
 
         public void DrawPreview(SpriteBatch spriteBatch)
         {
@@ -78,7 +78,7 @@ namespace Game1
         }
 
         public void Update(GameTime gameTime, List<Enemy> enemies)
-        {
+        {            
             mouseState = Mouse.GetState();
 
             cellX = (int)(mouseState.X / 32); // Convert the position of the mouse

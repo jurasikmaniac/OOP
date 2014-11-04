@@ -13,8 +13,17 @@ namespace Game1
     /// </summary>
     public enum ButtonStatus
     {
+        /// <summary>
+        /// Состояние покоя
+        /// </summary>
         Normal,
+        /// <summary>
+        /// Мышка наведена
+        /// </summary>
         MouseOver,
+        /// <summary>
+        /// Кнопка нажата
+        /// </summary>
         Pressed,
     }
     class Button : Sprite

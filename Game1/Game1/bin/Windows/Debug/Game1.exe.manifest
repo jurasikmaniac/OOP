@@ -50,7 +50,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>iz9t8baC52mJXnlf/wWb4H9IBq0=</dsig:DigestValue>
+        <dsig:DigestValue>Nld7Z1KhvZjnD/Pt8IhEBlVhCtE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -202,6 +202,15 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
       <dsig:DigestValue>8ksEXm4LRsMiUq371dSNUM8AdTM=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\GameOver.png" size="256271">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>V5oeD/cNmDURWaMOAXT8ntmKvC8=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Content\grass.png" size="1455">

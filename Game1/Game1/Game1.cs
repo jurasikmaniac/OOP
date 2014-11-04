@@ -18,14 +18,19 @@ namespace Game1
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        Level level = new Level();       
-        WaveManager waveManager;       
+        Level level = new Level();
+        WaveManager waveManager;
         Player player;
         Toolbar toolBar;
         Button arrowButton;
         Button spikeButton;
         Button slowButton;
 
+        Sprite GameOver;
+        bool gameover = false;
+        /// <summary>
+        /// Конструктор класса игры
+        /// </summary>
         public Game1()
             : base()
         {
@@ -38,7 +43,9 @@ namespace Game1
             IsMouseVisible = true;
         }
 
-     
+        /// <summary>
+        /// Инициализация
+        /// </summary>
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
@@ -54,6 +61,8 @@ namespace Game1
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            Texture2D gameOver = Content.Load<Texture2D>("GameOver");
+
             Texture2D grass = Content.Load<Texture2D>("grass.png");
             Texture2D path = Content.Load<Texture2D>("path.png");
             level.AddTexture(grass);
@@ -79,6 +88,7 @@ namespace Game1
             SpriteFont font = Content.Load<SpriteFont>("Arial");
             waveManager = new WaveManager(player, level, 24, enemyTexture);
             toolBar = new Toolbar(topBar, font, new Vector2(0, level.Height * 32), graphics.PreferredBackBufferWidth);
+            GameOver = new Sprite(gameOver, new Vector2(0, 0));
 
             // The "Normal" texture for the arrow button.
             Texture2D arrowNormal = Content.Load<Texture2D>("GUI\\Arrow Tower\\arrowbutton");
@@ -161,14 +171,25 @@ namespace Game1
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            waveManager.Update(gameTime);
-            player.Update(gameTime, waveManager.Enemies);
-            arrowButton.Update(gameTime);
-            //Update the spike button.
-            spikeButton.Update(gameTime);
-            slowButton.Update(gameTime);
-            base.Update(gameTime);
+            if (player.Lives <= 0)
+            {
+                gameover = true;
+            }
+            if (!gameover)
+            {
+                waveManager.Update(gameTime);
+                player.Update(gameTime, waveManager.Enemies);
+                arrowButton.Update(gameTime);
+                //Update the spike button.
+                spikeButton.Update(gameTime);
+                slowButton.Update(gameTime);
 
+            }
+            else
+            {
+                GameOver.Update(gameTime);
+            }
+            base.Update(gameTime);
         }
 
         /// <summary>
@@ -177,25 +198,32 @@ namespace Game1
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
+
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
             spriteBatch.Begin();
+            if (!gameover)
+            {
 
-            level.Draw(spriteBatch);
-            waveManager.Draw(spriteBatch);
-            player.Draw(spriteBatch);
-         
-            toolBar.Draw(spriteBatch, player);
-            
-            spikeButton.Draw(spriteBatch);
 
-            arrowButton.Draw(spriteBatch);
+                level.Draw(spriteBatch);
+                waveManager.Draw(spriteBatch);
+                player.Draw(spriteBatch);
 
-                        slowButton.Draw(spriteBatch);
+                toolBar.Draw(spriteBatch, player);
 
-            player.DrawPreview(spriteBatch);
+                spikeButton.Draw(spriteBatch);
+
+                arrowButton.Draw(spriteBatch);
+                slowButton.Draw(spriteBatch);
+
+                player.DrawPreview(spriteBatch);
+
+            }
+            else
+            {
+                GameOver.Draw(spriteBatch);
+            }
             spriteBatch.End();
-
             base.Draw(gameTime);
         }
     }

@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Game1</name>
+    </assembly>
+    <members>
+        <member name="P:Game1.Enemy.SpeedModifier">
+            <summary>
+            модификатор скорости.
+            </summary>
+        </member>
+        <member name="P:Game1.Enemy.ModifierDuration">
+            <summary>
+            продолджительность модификатора скорости
+            </summary>
+        </member>
+        <member name="T:Game1.Game1">
+            <summary>
+            This is the main type for your game
+            </summary>
+        </member>
+        <member name="M:Game1.Game1.#ctor">
+            <summary>
+            Конструктор класса игры
+            </summary>
+        </member>
+        <member name="M:Game1.Game1.Initialize">
+            <summary>
+            Инициализация
+            </summary>
+        </member>
+        <member name="M:Game1.Game1.LoadContent">
+            <summary>
+            LoadContent will be called once per game and is the place to load
+            all of your content.
+            </summary>
+        </member>
+        <member name="M:Game1.Game1.UnloadContent">
+            <summary>
+            UnloadContent will be called once per game and is the place to unload
+            all content.
+            </summary>
+        </member>
+        <member name="M:Game1.Game1.Update(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Allows the game to run logic such as updating the world,
+            checking for collisions, gathering input, and playing audio.
+            </summary>
+            <param name="gameTime">Provides a snapshot of timing values.</param>
+        </member>
+        <member name="M:Game1.Game1.Draw(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            This is called when the game should draw itself.
+            </summary>
+            <param name="gameTime">Provides a snapshot of timing values.</param>
+        </member>
+        <member name="T:Game1.ButtonStatus">
+            <summary>
+            Статус кнопки
+            </summary>
+        </member>
+        <member name="F:Game1.ButtonStatus.Normal">
+            <summary>
+            Состояние покоя
+            </summary>
+        </member>
+        <member name="F:Game1.ButtonStatus.MouseOver">
+            <summary>
+            Мышка наведена
+            </summary>
+        </member>
+        <member name="F:Game1.ButtonStatus.Pressed">
+            <summary>
+            Кнопка нажата
+            </summary>
+        </member>
+        <member name="M:Game1.Button.Update(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Обновляем состояния кнопки
+            </summary>
+            <param name="gameTime">The current game time.</param>
+        </member>
+        <member name="M:Game1.Button.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)">
+            <summary>
+            Нарисует кнопку
+            </summary>
+            <param name="spriteBatch">A SpriteBatch that has been started</param>
+        </member>
+        <member name="M:Game1.Player.#ctor(Game1.Level,Microsoft.Xna.Framework.Graphics.Texture2D[],Microsoft.Xna.Framework.Graphics.Texture2D)">
+            <summary>
+            Construct a new player.
+            </summary>
+        </member>
+        <member name="M:Game1.Player.AddTower">
+            <summary>
+            Adds a tower to the player's collection.
+            </summary>
+        </member>
+        <member name="T:Game1.Program">
+            <summary>
+            The main class.
+            </summary>
+        </member>
+        <member name="M:Game1.Program.Main">
+            <summary>
+            The main entry point for the application.
+            </summary>
+        </member>
+        <member name="M:Game1.SpikeTower.#ctor(Microsoft.Xna.Framework.Graphics.Texture2D,Microsoft.Xna.Framework.Graphics.Texture2D,Microsoft.Xna.Framework.Vector2)">
+            <summary>
+            Constructs a new Spike Tower object.
+            </summary>
+        </member>
+    </members>
+</doc>
